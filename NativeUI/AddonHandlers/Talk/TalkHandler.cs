@@ -1022,6 +1022,9 @@ public sealed class TalkHandler :
       string translatedName,
       string translatedText)
   {
+    // Publish the accepted body before swap-mode overlay selection for local external TTS.
+    TtsDialogueBridge.Publish(translatedText);
+
     var resolvedOverlayName = !string.IsNullOrWhiteSpace(translatedName)
         ? translatedName
         : originalName;

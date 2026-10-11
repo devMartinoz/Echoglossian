@@ -954,6 +954,9 @@ public sealed class TalkSubtitleHandler :
   /// <param name="translatedText">The translated TalkSubtitle text.</param>
   private void PublishOverlay(string originalText, string translatedText)
   {
+    // Native-only mode also exposes the accepted translation to local external TTS.
+    TtsDialogueBridge.Publish(translatedText);
+
     if (!this.ShouldUseOverlay())
     {
       this.clearOverlay();
